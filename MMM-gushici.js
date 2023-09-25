@@ -1,5 +1,3 @@
-const Log = require("logger");
-
 Module.register("MMM-gushici", {
 
     // Module config defaults.
@@ -40,14 +38,14 @@ Module.register("MMM-gushici", {
         // 收取json反馈
         if (notification === "getJson_r") {
             // 测试
-            Log.error(1,"【古诗词】", "收到payload：" + payload);
+            Log.error(6,"【古诗词】", "收到payload：" + payload);
             // 如果payload有效：content开始，大于30字
             if (payload.indexOf("content") != 0 && payload.length > 30) {
                 // 如果超过限定缓存数量，删除第一个
                 if (this.config.words.length > this.config.maxQuantity) {
                     this.config.words.shift()
                     // 测试
-                    Log.error(1,"【古诗词】", "删除一个");
+                    Log.error(5,"【古诗词】", "删除一个");
                 };
                 Log.error(1,this.name, payload);
                 thisJson = JSON.parse(payload);
@@ -84,7 +82,7 @@ Module.register("MMM-gushici", {
         var wrapper = document.createElement("div");
         let {content, origin,author,category} = this.getRandom();
         // 测试
-        Log.error(1,"【古诗词】", "随机获取：" + content+ origin+author+category);
+        Log.error(4,"【古诗词】", "随机获取：" + content+ origin+author+category);
         this.getJson();
         var spw = document.createElement("div");
         spw.className = "thin xmedium bright pre-line";
