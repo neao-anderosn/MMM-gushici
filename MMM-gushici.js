@@ -9,13 +9,15 @@ Module.register("MMM-gushici", {
         words: [{
             content: "去年今日此门中，人面桃花相映红。",
             origin: "题都城南庄",
-            author:"崔护"
+            author:"崔护",
+            category: " "
         }, {
             content: "十年生死两茫茫，不思量，自难忘。",
             origin: "江城子·乙卯正月二十日夜记梦",
-            author: "苏轼"
+            author: "苏轼",
+            category: " "
         }],
-        maxQuantity: 20,
+        maxQuantity: 5,
         lineBreak: false
     },
 
@@ -36,7 +38,7 @@ Module.register("MMM-gushici", {
         // 收取json反馈
         if (notification === "getJson_r") {
             // 测试
-            Log.error(1,"【古诗词】", "收到payload" + payload);
+            Log.error(1,"【古诗词】", "收到payload：" + payload);
             // 如果payload有效：content开始，大于30字
             if (payload.indexOf("content") != 0 && payload.length > 30) {
                 // 如果超过限定缓存数量，删除第一个
