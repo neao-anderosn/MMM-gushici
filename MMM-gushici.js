@@ -42,6 +42,8 @@ Module.register("MMM-gushici", {
                 // 如果超过限定缓存数量，删除第一个
                 if (this.config.words.length > this.config.maxQuantity) {
                     this.config.words.shift()
+                    // 测试
+                    Log.error(1,"【古诗词】", "删除一个");
                 };
                 Log.error(1,this.name, payload);
                 thisJson = JSON.parse(payload);
