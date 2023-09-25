@@ -37,12 +37,13 @@ Module.register("MMM-gushici", {
         if (notification === "getJson_r") {
             // 如果payload有效：content开始，大于30字
             if (payload.indexOf("content") != 0 && payload.length > 30) {
-                // 如果超过限定缓存数量，删除最后一个
+                // 如果超过限定缓存数量，删除第一个
                 if (this.config.words.length > this.config.maxQuantity) {
                     this.config.words.shift()
                 };
                 Log.error(1,this.name, payload);
                 thisJson = JSON.parse(payload);
+                // 遍历缓存，如果存在就不添加
                 for (word of this.config.words){
                     if (thisJson.content == word.content){
                         return;
@@ -73,7 +74,8 @@ Module.register("MMM-gushici", {
     // dom 生成器。
     getDom: function() {
         var wrapper = document.createElement("div");
-        let {content, origin,author} = this.getRandom();
+        let {content, origin,author,category} = this.getRandom();
+        Log.error(1,this.name, content+ origin+author+category);
         this.getJson();
         var spw = document.createElement("div");
         spw.className = "thin xmedium bright pre-line";

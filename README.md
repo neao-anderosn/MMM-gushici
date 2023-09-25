@@ -8,7 +8,7 @@
 
 ```shell
 cd modules
-git clone https://github.com/jdonge/MMM-yijv
+git clone https://github.com/neao-anderosn/MMM-gushici.git
 ```
 
 ## Using the module
@@ -78,11 +78,14 @@ var config = {
 		fadeSpeed: 4000,
                 authorAlign: "",
 		words: [{
-            		content: "不要怂，一起上！",
-            		source: "和平精英"
+            	content: "去年今日此门中，人面桃花相映红。",
+            	origin: "题都城南庄",
+            	author:"崔护"
         		},{
-			content: "世界那么大，你想去看看。事情那么多，你咋不干？",
-            		source: "陈一发儿"}],
+				content: "十年生死两茫茫，不思量，自难忘。",
+            	origin: "江城子·乙卯正月二十日夜记梦",
+            	author: "苏轼"
+				}]
         	maxQuantity: 10,
         	lineBreak: true
             }
