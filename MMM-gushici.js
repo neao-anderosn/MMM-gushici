@@ -38,9 +38,9 @@ Module.register("MMM-gushici", {
 
     socketNotificationReceived: function(notification, payload) {
         // 收取json反馈
-        if (notification === "getJson_r") {
+        if (notification === "getJson_resp") {
             // 测试
-            Log.info("【古诗词】" + "收到payload：" + payload);
+            Log.warn("【古诗词】" + "收到payload：" + payload);
             // 如果payload有效：content开始，大于30字
             if (payload.indexOf("content") != 0 && payload.length > 30) {
                 // 如果超过限定缓存数量，删除第一个
@@ -49,7 +49,7 @@ Module.register("MMM-gushici", {
                     // 测试
                     Log.info("【古诗词】" + "删除一个");
                 };
-                // Log.error(1,this.name, payload);
+                Log.error(1,this.name, payload);
                 thisJson = JSON.parse(payload);
                 // 遍历缓存，如果存在就不添加
                 for (word of this.config.words){
@@ -64,7 +64,7 @@ Module.register("MMM-gushici", {
     },
     // 发送获取诗词指令
     getJson: function() {
-        this.sendSocketNotification("getJson_s", this.config.url)
+        this.sendSocketNotification("getJson_sent", this.config.url)
     },
 
     // 随机获取一句不重复的诗词
@@ -82,7 +82,7 @@ Module.register("MMM-gushici", {
     // dom 生成器。
     getDom: function() {
         var wrapper = document.createElement("div");
-        let {content, origin,author,category} = this.getRandom();
+        let {content, origin, author, category} = this.getRandom();
         // 测试
         Log.info("【古诗词】" + "随机获取：" + content+ origin+author+category);
         this.getJson();
@@ -94,7 +94,7 @@ Module.register("MMM-gushici", {
             }
             content = content.replace(/(\n+)/g, "\n").replace(/(\n$)/, "");
         }
-        // Log.error(3, this.name, content, origin, author, category);
+        Log.error(3, this.name, content, author, origin);
         var parts = content.split("\n");
         for (part of parts){
             spw.appendChild(document.createTextNode(part));

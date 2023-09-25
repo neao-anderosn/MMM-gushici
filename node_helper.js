@@ -8,7 +8,7 @@ module.exports = NodeHelper.create({
   },
 
   socketNotificationReceived: function (notification, payload) {
-    if (notification === "getJson_s") {
+    if (notification === "getJson_sent") {
       var self = this;
       var body = "";
 
@@ -16,11 +16,10 @@ module.exports = NodeHelper.create({
         response.on('data', d => {
           body += d
         })
-
         response.on('end', () => {
           if (response.statusCode == 200) {
-            self.sendSocketNotification("getJson_r", body)
-            Log.info("网络获取："+body)
+            self.sendSocketNotification("getJson_resp", body)
+            Log.warn("网络获取："+body)
           }
         })
       }).on('error', error => {
