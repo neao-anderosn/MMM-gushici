@@ -20,6 +20,8 @@ module.exports = NodeHelper.create({
         response.on('end', () => {
           if (response.statusCode == 200) {
             self.sendSocketNotification("getJson_r", body)
+            / 测试
+            Log.error(1,"【古诗词】", "网络获取：" + body);
           }
         })
       }).on('error', error => {
