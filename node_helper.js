@@ -19,8 +19,8 @@ module.exports = NodeHelper.create({
 
         response.on('end', () => {
           if (response.statusCode == 200) {
-            self.sendSocketNotification("getJson_r", body)
             Log.info(body)
+            self.sendSocketNotification("getJson_r", body)
           }
         })
       }).on('error', error => {
