@@ -19,7 +19,7 @@ module.exports = NodeHelper.create({
         response.on('end', () => {
           if (response.statusCode == 200) {
             self.sendSocketNotification("getJson_resp", body)
-            Log.warn("网络获取："+body)
+            // Log.warn("网络获取："+body)
           }
         })
       }).on('error', error => {

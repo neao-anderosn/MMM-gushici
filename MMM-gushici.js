@@ -1,5 +1,3 @@
-const Log = require("logger");
-
 Module.register("MMM-gushici", {
 
     // Module config defaults.
