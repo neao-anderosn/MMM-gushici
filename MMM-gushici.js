@@ -4,7 +4,7 @@ Module.register("MMM-gushici", {
     defaults: {
         updateInterval: 3*60*1000,
         fadeSpeed: 4000,
-        url: "https://v1.jinrishici.com/all.json",
+        url: "http://v1.jinrishici.com/all.json",
         authorAlign: "align-right",
         words: [{
             content: "去年今日此门中，人面桃花相映红。",
